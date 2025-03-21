@@ -1,0 +1,44 @@
+{% if is_paginated %}
+  <div hx-target="#list-content" class="mt-2">
+    <div class="is-flex is-justify-content-center">
+      <ul class="pagination">
+        <li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+          <a class="page-link" aria-label="Previous"
+          {% if page_obj.has_previous %}
+          hx-get="?page={{ page_obj.previous_page_number }}"
+          hx-push-url="true"
+          {% else %}
+          {% endif %}
+          >
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+    {% for num in elided_page_range %}
+        <li class="page-item">
+          <a class="page-link {% if num == page_obj.number %}active{% endif %}"
+          {% if num != page_obj.number and num != page_obj.paginator.ELLIPSIS %}
+          hx-get="?page={{ num }}" hx-push-url="true"
+          {% else %}
+          disabled
+          {% endif %}
+          >
+            {{ num }}
+          </a>
+        </li>
+    {% endfor %}
+        <li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+          <a class="page-link" aria-label="Next"
+          {% if page_obj.has_next %}
+          hx-get="?page={{ page_obj.next_page_number }}"
+          hx-push-url="true"
+          {% endif %}
+          >
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endif %}

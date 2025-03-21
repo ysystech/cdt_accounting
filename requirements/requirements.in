@@ -1,0 +1,23 @@
+Django
+boto3
+celery
+celery-progress
+celery[redis]
+django-allauth[socialaccount,mfa]
+django-anymail[mailgun]  # email services
+django-celery-beat
+django-environ
+django-htmx
+django-storages
+django-template-partials
+django-waffle
+djangorestframework
+djangorestframework-api-key
+drf-spectacular
+litellm
+markdown
+openai
+psycopg2-binary
+redis
+requests
+whitenoise[brotli]
